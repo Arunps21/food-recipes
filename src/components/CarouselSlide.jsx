@@ -1,9 +1,9 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import CarouselImage from "./CarouselImage";
-import Carousel1 from "./images/carousel1.jpg";
-import Carousel2 from "./images/carousel2.jpg";
-import Carousel3 from "./images/carousel3.jpg";
+import Carousel1 from "./images/Carousel1.jpg";
+import Carousel2 from "./images/Carousel2.jpg";
+import Carousel3 from "./images/Carousel3.jpg";
 
 function CarouselSlide() {
   return (
