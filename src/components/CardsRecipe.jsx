@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -11,13 +11,13 @@ import SalmonCakes from "./images/Salmon Cakes.jpeg";
 import Form from "react-bootstrap/Form";
 import "./CardsRecipe.css";
 import { Link } from "react-router-dom";
+import context from "./ComponentProvider";
 
 function CardsRecipe() {
-  const [search, setSearch] = useState("");
+  //useContext
+  const {component}=useContext(context)
 
-  const searchFun = (event) => {
-    setSearch(event.target.value);
-  };
+
   const recipe = [
     {
       id: 1,
@@ -59,12 +59,6 @@ function CardsRecipe() {
   return (
     <>
       <Container>
-        <Form.Control
-          type="email"
-          placeholder="Search Here"
-          onChange={searchFun}
-          className="mt-5"
-        />
         <h1 className="fw-bold text-center mt-4 text-light">
           Savor the Magic of Every Bite
         </h1>
@@ -74,11 +68,11 @@ function CardsRecipe() {
               .filter((sear) => {
                 return sear.title
                   .toLocaleLowerCase()
-                  .match(search.toLocaleLowerCase());
+                  .match(component.toLocaleLowerCase());
               })
               .map((view) => {
                 return (
-                  <Col lg={4} key={view.id}>
+                  <Col lg={4} md={6} key={view.id}>
                     <Link to={`/RecipeView/${view.id}`} className="text-decoration-none">
                       <Card
                         style={{ width: "18rem", height: "480px" }}
@@ -94,7 +88,7 @@ function CardsRecipe() {
                           <Button variant="primary">Recipe Here</Button>
                         </Card.Body>
                       </Card>
-                    </Link>{" "}
+                    </Link>
                   </Col>
                 );
               })}

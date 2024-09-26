@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,6 +9,7 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import RegisterModal from './RegisterModal';
 import LoginModal from './LoginModal';
+import context from './ComponentProvider';
 
 
 function HeaderPage() {
@@ -21,6 +22,22 @@ function HeaderPage() {
   const toggleForm = () =>{
     setIsRegistered(!isRegistered)
   }
+
+  //usecontext
+  const {component,setComponent} = useContext(context)
+  //search handle state
+  const [handle,setHandle] = useState("")
+
+  //search function
+  let searchFun=(event)=>{
+    setHandle(event.target.value)
+  }
+
+  //search button trigger function
+  let buttonFun=()=>{
+    setComponent(handle)
+  }
+
   return (
     <>
         <Navbar expand="lg" className="bg-primary">
@@ -55,8 +72,9 @@ function HeaderPage() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={searchFun}
             />
-            <Button variant="secondary">Search</Button>
+            <Button variant="secondary" onClick={buttonFun}>Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
