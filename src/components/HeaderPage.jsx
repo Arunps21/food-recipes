@@ -34,7 +34,7 @@ function HeaderPage() {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link onClick={handleShow}>Register</Nav.Link>
+            <Nav.Link onClick={handleShow}>Login</Nav.Link>
             <NavDropdown title="Deals" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">

@@ -10,6 +10,7 @@ import WarmGoatCheeseDip from "./images/Warm Goat Cheese Dip.jpeg";
 import SalmonCakes from "./images/Salmon Cakes.jpeg";
 import Form from "react-bootstrap/Form";
 import "./CardsRecipe.css";
+import { Link } from "react-router-dom";
 
 function CardsRecipe() {
   const [search, setSearch] = useState("");
@@ -68,32 +69,35 @@ function CardsRecipe() {
           Savor the Magic of Every Bite
         </h1>
         <Row className="mt-5" align="center">
-          {recipe.length > 0
-            && recipe
-                .filter((sear) => {
-                  return (sear.title.toLocaleLowerCase()
-                    .match(search.toLocaleLowerCase()))
-                })
-                .map((view) => {
-                  return(
+          {recipe.length > 0 &&
+            recipe
+              .filter((sear) => {
+                return sear.title
+                  .toLocaleLowerCase()
+                  .match(search.toLocaleLowerCase());
+              })
+              .map((view) => {
+                return (
                   <Col lg={4} key={view.id}>
-                    <Card
-                      style={{ width: "18rem", height: "480px" }}
-                      className="mb-5 border-1 border-primary"
-                      id="card"
-                    >
-                      <Card.Img variant="top" src={view.image} />
-                      <Card.Body>
-                        <Card.Title className="text-light">
-                          {view.title}
-                        </Card.Title>
-                        <Card.Text>{view.text}</Card.Text>
-                        <Button variant="primary">Recipe Here</Button>
-                      </Card.Body>
-                    </Card>
+                    <Link to={`/RecipeView/${view.id}`} className="text-decoration-none">
+                      <Card
+                        style={{ width: "18rem", height: "480px" }}
+                        className="mb-5 border-1 border-primary text-white"
+                        id="card"
+                      >
+                        <Card.Img variant="top" src={view.image} />
+                        <Card.Body>
+                          <Card.Title className="text-light">
+                            {view.title}
+                          </Card.Title>
+                          <Card.Text>{view.text}</Card.Text>
+                          <Button variant="primary">Recipe Here</Button>
+                        </Card.Body>
+                      </Card>
+                    </Link>{" "}
                   </Col>
-                )})
-            }
+                );
+              })}
         </Row>
       </Container>
     </>
