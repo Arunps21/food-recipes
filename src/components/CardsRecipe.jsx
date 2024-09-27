@@ -15,8 +15,7 @@ import context from "./ComponentProvider";
 
 function CardsRecipe() {
   //useContext
-  const {component}=useContext(context)
-
+  const { component } = useContext(context);
 
   const recipe = [
     {
@@ -73,22 +72,25 @@ function CardsRecipe() {
               .map((view) => {
                 return (
                   <Col lg={4} md={6} key={view.id}>
-                    <Link to={`/RecipeView/${view.id}`} className="text-decoration-none">
-                      <Card
-                        style={{ width: "18rem", height: "480px" }}
-                        className="mb-5 border-1 border-primary text-white"
-                        id="card"
-                      >
-                        <Card.Img variant="top" src={view.image} />
-                        <Card.Body>
-                          <Card.Title className="text-light">
-                            {view.title}
-                          </Card.Title>
-                          <Card.Text>{view.text}</Card.Text>
+                    <Card
+                      style={{ width: "18rem", height: "480px" }}
+                      className="mb-5 border-1 border-primary text-white"
+                      id="card"
+                    >
+                      <Card.Img variant="top" src={view.image} />
+                      <Card.Body>
+                        <Card.Title className="text-light">
+                          {view.title}
+                        </Card.Title>
+                        <Card.Text>{view.text}</Card.Text>
+                        <Link
+                          to={`/RecipeView/${view.id}`}
+                          className="text-decoration-none"
+                        >
                           <Button variant="primary">Recipe Here</Button>
-                        </Card.Body>
-                      </Card>
-                    </Link>
+                        </Link>
+                      </Card.Body>
+                    </Card>
                   </Col>
                 );
               })}
