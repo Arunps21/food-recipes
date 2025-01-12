@@ -11,11 +11,11 @@ function App() {
   return (
     <>
       <ComponentProvider>
-        <HeaderPage />
+        <HeaderPage/>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/RecipeView/:id" element={<RecipeView />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/RecipeView/:id" element={<RecipeView/>} />
+          <Route path="/AboutUs" element={<AboutUs/>} />
         </Routes>
         <FooterPage />
       </ComponentProvider>
